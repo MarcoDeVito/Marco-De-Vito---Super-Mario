@@ -73,7 +73,7 @@ while (random != 1) {
  */
 
 
-let startGame = prompt(`Sei pronto? \n (1) Inizia la partita\n (2) Esci dal gioco`);
+let startGame = prompt(`Sei pronto?🎮 \n (1) Inizia la partita \n (2) Esci dal gioco`);
 let life = 3;
 
 while (startGame != '1' && startGame != '2') {
@@ -82,38 +82,46 @@ while (startGame != '1' && startGame != '2') {
 
 // preme 1
 if (startGame == '1') {
-    alert('Buona partita')
+    alert(`💖:${life}\n\nBuona partita `)
     let player;
+    let icon;
     do {
-        player = prompt('Scegli il tuo personaggio:\n(1) Mario \n(2) Luigi ');
+        player = prompt('Scegli il tuo personaggio:\n(1) Mario🟥 \n(2) Luigi🟩 ');
 
     } while (player != '1' && player != '2')
 
     if (player === '1') {
         player = "Mario"
+        icon="🟥";
+
     }
     if (player === '2') {
         player = "Luigi"
+        icon="🟩";
     }
     let nEnemy=0;
     let enemy;
-    // alert(`life:${life}`);
-    for (let i = 0; i < 6 && life > 0; i++) {
-        enemy = prompt("Attento c'è un nemico! Premi: \n (1) Salta e corri \n (2) Salta sopra al nemico ed eliminalo");
+    let rand=Math.floor(Math.random()*(10)+1) 
+    // alert(`nemici=${rand}`);
+
+
+
+    for (let i = 0; i < rand && life > 0; i++) {
+        enemy = prompt(`        ${icon}💖:${life}\nAttento c'è il ${i+1}° nemico! 🍄\nPremi: \n (1) Salta e corri \n (2) Salta sopra al nemico ed eliminalo`);
         
         switch (enemy) {
             case '1':
-                alert(`c'è mancato poco! Sei riuscito a schivare il ${i + 1}° nemico`);
+                alert(`        ${icon}💖:${life}\nc'è mancato poco! Sei riuscito a schivare il ${i + 1}° nemico`);
                 nEnemy++;
                 break;
             case '2':
-                alert(`WOW! bravissimo ${player}! Hai fatto fuori il ${i + 1}° nemico! Continua così`);
+                alert(`        ${icon}💖:${life}\nWOW! bravissimo ${player}!\nHai fatto fuori il ${i + 1}° nemico!\nContinua così`);
                 nEnemy++;
                 break;
 
             default:
-                alert('Peccato sei stato troppo lento...ti ha fatto perdere una vita')
                 life--;
+                alert(`        ${icon}💖:${life}\nPeccato sei stato troppo lento...ti ha fatto perdere una vita`)
                 break;
         }
     }
@@ -121,11 +129,11 @@ if (startGame == '1') {
 
     switch (life) {
         case 0:
-            alert(`Mi spiace ${player}! GAME OVER`);
+            alert(`Mi spiace ${player}${icon}! 😭😭\n\n GAME OVER`);
             break;
         
         default:
-            alert(`Complimenti ${player}! Hai sconfitto ${nEnemy} nemici, ora puoi salvare la principessa`);
+            alert(`Complimenti ${player}${icon}! 🏆\nHai sconfitto ${nEnemy} nemici, ora puoi salvare la principessa 👑`);
             break;
     }
    
